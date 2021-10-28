@@ -12,13 +12,12 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 
 //https://polygon-mumbai.infura.io/v3/871b810ff04e4f4aa63c36e774350a12
 module.exports = {
+  defaultNetwork: "hardhat",
   networks: {
+    
     hardhat: {
-
-    },
-    /*development: {
       chainId:1337
-    },*/
+    },
     mumbai: {
       url: 'https://polygon-mumbai.infura.io/v3/871b810ff04e4f4aa63c36e774350a12',
       accounts: [process.env.METAMASK_PRIVATE_KEY]

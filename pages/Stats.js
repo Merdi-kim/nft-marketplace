@@ -44,7 +44,7 @@ export default function CreatorDashboard() {
       }
       return item
     }))
-    /* create a filtered array of items that have been sold */
+  
     const soldItems = items.filter(i => i.sold)
     setSold(soldItems)
     setNfts(items)
@@ -90,5 +90,6 @@ export default function CreatorDashboard() {
         }
         </div>
     </div>
-  )
+    ) 
+  
 }
