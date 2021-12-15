@@ -14,7 +14,7 @@ function home() {
             </nav>
 
             <main className='flex flex-col-reverse md:flex-row w-full h-screen overflow-hidden'>
-                <div className='flex-1 bg-pink-900 flex md:flex-wrap overflow-scroll gap-8'>
+                <div className='flex-1 bg-pink-900 flex items-center justify-center md:flex-wrap overflow-scroll gap-8'>
                     <NftCard/>
                     <NftCard/>
                     <NftCard/>
@@ -22,7 +22,7 @@ function home() {
                     <NftCard/>
                     <NftCard/>
                 </div>
-                <div className='w-96 bg-pink-600 flex items-center justify-center py-4'>
+                <div className='w-full h-2/5 md:h-full md:w-96 bg-pink-600 flex items-center justify-center py-4'>
                     <section className='bg-blue-300 h-full md:h-4/6 w-11/12 overflow-hidden rounded-xl'>
                         <img className='h-5/6' src="https://v2.cimg.co/news/63800/36648/screenshot-2021-11-02-at-17-13-00-cryptopunks-details-for-punk-7557.png" alt="" />
                         <h2 className='m-4 text-lg font-bold'>This punk</h2>
