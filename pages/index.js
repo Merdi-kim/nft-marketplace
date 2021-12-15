@@ -2,13 +2,14 @@ import Head from 'next/head'
 import Link from 'next/link'
 import CountCard from '../components/CountCard'
 import Image from 'next/image'
+
 export default function Home() {
   
   return (
 
     <div className='text-black  '>
       <Head>
-        <title > Cyrrus </title>
+        <title> Cyrrus </title>
         <meta name="description" content="Decentralized NFT marketplace" />
         <link rel="icon" href="/phonto.ico" />
       </Head>
