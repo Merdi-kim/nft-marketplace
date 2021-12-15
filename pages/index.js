@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import CountCard from '../components/CountCard'
+import Image from 'next/image'
 export default function Home() {
   
   return (
@@ -28,7 +29,7 @@ export default function Home() {
           </section>
         </div>
         <div className='flex-1 flex items-center h-screen'>
-          <img className='my-4 md:h-3/6 lg:h-4/6 xl:h-5/6' src="/bg.png" alt="" />
+          <Image height={500} width={700} className='my-6 md:h-3/6 lg:h-4/6 xl:h-5/6' src="/bg.png" alt="" />
         </div>
       </main>
     </div>
