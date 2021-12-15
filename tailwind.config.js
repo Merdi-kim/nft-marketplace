@@ -1,8 +1,18 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['ui-sans-serif', 'system-ui'],
+        'serif': ['ui-serif', 'Georgia'],
+        'mono': ['ui-monospace', 'SFMono-Regular'],
+        'merkim': ['Sora', 'sans-serif'],
+        'tt': ['Kanit', 'sans-serif'],
+        'sm-tt': ['Source Sans 3', 'sans-serif']
+
+      }
+    },
   },
   variants: {
     extend: {},

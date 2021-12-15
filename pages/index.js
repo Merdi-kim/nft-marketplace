@@ -1,102 +1,37 @@
-
-import {ethers} from 'ethers'
-import { useEffect, useState} from 'react'
-import axios from 'axios'
-import Web3Modal from 'web3modal'
-
-import {
-  nftaddress,nftmarketaddress
-} from '../config'
-
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
-
+import Head from 'next/head'
+import Link from 'next/link'
+import CountCard from '../components/CountCard'
 export default function Home() {
-  const [nfts, setNfts] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  const loadNfts = async() => {
-    const provider = new ethers.providers.JsonRpcProvider()
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
-    const marketContract = new ethers.Contract(nftmarketaddress,Market.abi, provider)
-    try {
-      const data = await marketContract.fetchMarketItems()
-      const items = await Promise.all(data.map(async i => {
-        const tokenUri = await tokenContract.tokenURI(i.tokenId)
-        const meta = await axios.get(tokenUri)
-        let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
-        let item = {
-          price,
-          tokenId: i.tokenId.toNumber(),
-          seller: i.seller,
-          owner: i.owner,
-          image: meta.data.image,
-          name:meta.data.name,
-          description: meta.data.description
-        }
-        return item
-      }))
-      setNfts(items)
-      setLoading(false)
-    } catch(err) {
-      console.log(err)
-    }
   
-  }
-
-  const buyNFT = async (nft) => {
-    const web3modal = new Web3Modal()
-    const connection = await web3modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
-    const signer = provider.getSigner()
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
-    const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, {value:price})
-    await transaction.wait()
-    loadNfts()
-  }
-
-  useEffect(() => {
-    loadNfts()
-  }, [])
-
-  if (loading) {
-    return (
-      <p>Loading </p>
-    )
-  }
-
-  if (!loading && nfts.length == 0) {
-    return (
-      <p> No NFTS...</p>
-    )
-  }
-
   return (
 
-    <main className='flex justify-center'>
-      <div className='px-4' style={{ maxWidth:'1600px'}}>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4'>
-          {
-            nfts.map((nft, i) => (
-              <div kye={i} className='border shadow rounded-xl overflow-hidden'>
-                <img src={nft.image}/>
-                <div className='p-4'>
-                  <p style={{height:'64px'}} className='text-2xl font-semibold'>{nft.name}</p>
-                  <div style={{height:'70px', overflow:'hidden'}}>
-                    <p className='text-gray-400'>{nft.description}</p>
-                  </div>
-                </div>
-                <div className='p-4 bg-black'> 
-                <p className='text-2xl mb-4 font-bold text-white'>{nft.price} ETH</p>
-                <button className='w-full bg-pink-500 text-white font-bold py-2 px-12 rounded' onClick={() => buyNFT(nft)}>Buy</button>
-                </div>
-              </div>
-            ))
-          }
+    <div className='text-black  '>
+      <Head>
+        <title > Cyrrus </title>
+        <meta name="description" content="Decentralized NFT marketplace" />
+        <link rel="icon" href="/phonto.ico" />
+      </Head>
+
+      <nav className='flex h-12 items-center justify-between text-white px-4 border-b-2 border-white bg-purple-600 font-merkim'>
+        <h1 className='text-xl font-extrabold '>CYRRUS</h1>
+        <Link href={'/home'}>Marketplace</Link>
+      </nav>
+
+      <main className='flex flex-col-reverse sm:flex-row'>
+        <div className='flex-1 h-screen flex flex-col items-center justify-center'>
+          <section className='text-4xl flex-reverse sm:text-6xl font-extrabold mb-12 pl-12 w-full font-tt'>Discover and sell awesome <span className='text-purple-600'>NFTs</span></section>
+          <p className='w-10/12 mb-16 font-merkim'>Buy,sell and own digital art from your favorite artists and enjoy low gas fees on polygon. All you need is a wallet with $MATIC and you're all set. Now launch the app and enjoy digital arts</p>
+          <section className='flex w-full justify-start px-12 mb-16'><Link href={'/home'}><span className='bg-purple-600 text-2xl py-3 px-6 rounded-xl border-2 border-white cursor-pointer font-tt text-white'>Explore now </span></Link></section>
+          <section className='flex w-full justify-start pl-12 font-merkim'>
+            <CountCard number={30} name={'Artists'}/>
+            <CountCard number={100} name={'NFTs'}/>
+          </section>
         </div>
-      </div> 
-    </main>
+        <div className='flex-1 flex items-center h-screen'>
+          <img className='my-4 md:h-3/6 lg:h-4/6 xl:h-5/6' src="/bg.png" alt="" />
+        </div>
+      </main>
+    </div>
 
   )
 }
