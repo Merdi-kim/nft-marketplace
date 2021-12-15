@@ -11,11 +11,14 @@ module.exports = {
         'tt': ['Kanit', 'sans-serif'],
         'sm-tt': ['Source Sans 3', 'sans-serif']
 
-      }
+      }, 
+  
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }

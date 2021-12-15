@@ -4,3 +4,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .content-area {
+        height: calc(100vh - 3rem);
+    }
+}
