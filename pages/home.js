@@ -6,15 +6,14 @@ function home() {
         <div>
             <nav className='flex h-12 items-center justify-between text-white px-4 border-b-2 border-white bg-purple-600 font-merkim'>
               <h1 className='text-xl font-extrabold '>CYRRUS</h1>
-              <section className='w-3/12 flex items-center justify-between h-3/4'>
-                <Link className='text-blue-600' href={'/mint'} passHref><span className='bg-white text-blue-600 h-full flex items-center justify-center px-4 rounded-lg border-2 hover:border-blue-600 cursor-pointer'>Upload</span></Link>
-                <button className='bg-white text-blue-600 h-full flex items-center justify-center px-4 rounded-lg border-2 hover:border-blue-600'>Connect wallet</button>
+              <section className='sm:w-7/12 md:w-5/12 lg:w-4/12 flex items-center justify-between h-3/4'>
+                <Link className='text-blue-600' href={'/mint'} passHref><span className='bg-white text-blue-600 h-full flex items-center justify-center px-2 md:px-4 text-xs md:text-lg rounded-lg border-2 hover:border-blue-600 cursor-pointer mr-1'>Upload</span></Link>
+                <button className='bg-white text-blue-600 h-full flex items-center justify-center px-2 md:px-4 text-xs md:text-lg rounded-lg border-2 hover:border-blue-600'>Connect wallet</button>
               </section>
-              
             </nav>
 
             <main className='flex flex-col-reverse md:flex-row w-full content-area overflow-hidden'>
-                <div className='flex-1 flex items-center justify-center md:flex-wrap overflow-scroll scrollbar-hide gap-8 border-r-2 border-blue-200'>
+                <div className='flex-1 flex items-center justify-center md:flex-wrap overflow-scroll scrollbar-hide gap-8 border-t-2 md:border-r-2 border-blue-200'>
                     <NftCard/>
                     <NftCard/>
                     <NftCard/>
