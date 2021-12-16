@@ -13,7 +13,7 @@ function home() {
             </nav>
 
             <main className='flex flex-col-reverse md:flex-row w-full content-area overflow-hidden'>
-                <div className='flex-1 flex items-center justify-center md:flex-wrap overflow-scroll scrollbar-hide gap-8 border-t-2 md:border-r-2 border-blue-200'>
+                <div className='flex-1 flex md:justify-center  items-center  md:flex-wrap overflow-scroll scrollbar-hide md:gap-8 border-t-2 md:border-r-2 border-blue-200'>
                     <NftCard/>
                     <NftCard/>
                     <NftCard/>

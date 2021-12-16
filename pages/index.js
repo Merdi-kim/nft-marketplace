@@ -7,7 +7,7 @@ export default function Home() {
   
   return (
 
-    <div className='text-black  '>
+    <div className='text-black'>
       <Head>
         <title> Cyrrus </title>
         <meta name="description" content="Decentralized NFT marketplace" />
@@ -19,7 +19,7 @@ export default function Home() {
         <Link href={'/home'}>Marketplace</Link>
       </nav>
 
-      <main className='flex content-area flex-col-reverse sm:flex-row'>
+      <main className='flex justify-center items-center h-full md:content-area flex-col-reverse sm:flex-row'>
         <div className='flex-1 h-full flex flex-col items-center justify-center'>
           <section className='text-4xl flex-reverse sm:text-6xl font-extrabold mb-12 pl-12 w-full font-tt'>Discover and sell awesome <span className='text-purple-600'>NFTs</span></section>
           <p className='w-10/12 mb-16 font-merkim'>Buy,sell and own digital art from your favorite artists and enjoy low gas fees on polygon. All you need is a wallet with $MATIC and you are all set. Now launch the app and enjoy digital arts</p>
