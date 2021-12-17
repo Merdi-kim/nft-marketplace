@@ -7,7 +7,7 @@ import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import { nftmarketaddress, nftaddress } from '../utils'
 import { useEffect, useState } from 'react'
 
-function home() {
+function Home() {
 
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
@@ -84,4 +84,4 @@ function home() {
     )
 }
 
-export default home
+export default Home
