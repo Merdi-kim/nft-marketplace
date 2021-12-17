@@ -9,4 +9,22 @@
     .content-area {
         height: calc(100vh - 3rem);
     }
+
+    .move {
+        animation: 1s move infinite;
+    }
+
+    @keyframes move {
+        0% {
+            transform:scale(1);
+            font-weight:300;
+        } 50% {
+            transform:scale(1.2);
+            font-weight:600;
+        }
+        100% {
+            transform:scale(1.4);
+            font-weight:900;
+        }
+    }
 }

@@ -1,5 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
-require('dotenv').config()
+
+const fs = require("fs");
+const privateKey = fs.readFileSync(".secret").toString();
 
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -10,7 +12,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-//https://polygon-mumbai.infura.io/v3/871b810ff04e4f4aa63c36e774350a12
+
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
@@ -19,12 +21,8 @@ module.exports = {
       chainId:1337
     },
     mumbai: {
-      url: 'https://polygon-mumbai.infura.io/v3/871b810ff04e4f4aa63c36e774350a12',
-      accounts: [process.env.METAMASK_PRIVATE_KEY]
-    }, 
-    mainnet: {
-      url: 'https://polygon-mainnet.infura.io/v3/871b810ff04e4f4aa63c36e774350a12',
-      accounts: [process.env.METAMASK_PRIVATE_KEY]
+      url: 'https://polygon-mumbai.g.alchemy.com/v2/LhltBAHnspBMIgCx1SsxYJqM_rJOeZYe',
+      accounts: [`0x${privateKey}`]
     }
   },
   solidity: "0.8.4",
