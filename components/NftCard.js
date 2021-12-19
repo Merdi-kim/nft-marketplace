@@ -31,7 +31,7 @@ function NftCard({selectNFt,img,price, owner,name,description}) {
     }
 
     return (
-        <div className="relative bg-gray-200 h-80 md:h-96 w-64 rounded-xl m-4 overflow-hidden flex-none cursor-pointer" >
+        <div className="relative bg-gray-200 h-80 md:h-96 w-64 rounded-xl m-4 overflow-hidden flex-none cursor-pointer border-2 border-blue-600" >
             <img className="h-4/6" src={img} alt="" onMouseOver={getNFT}/>
             <h2 className="font-bold m-1 md:m-2">{name}</h2>
             <p className="mb-2 flex justify-end pr-2 text-xs">{price} MATIC</p>
