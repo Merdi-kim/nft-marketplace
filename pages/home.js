@@ -19,8 +19,8 @@ function Home() {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const [selectedNFT, setSelectedNFT] = useState({
-      img: 'https://images2.boardingschoolreview.com/photo/1122x864/1000/593/img-academy-oqxuxY.jpg',
-      name:"My punk",
+      img: 'https://publish.one37pm.net/wp-content/uploads/2021/02/how-to-buy-a-cryptopunk_0001_03.jpg?fit=750%2C500',
+      name:"Noogler punk",
       owner:''
     })
 
