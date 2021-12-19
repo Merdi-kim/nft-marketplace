@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { NFTStorage, File } from 'nft.storage'
+import { Web3Storage } from 'web3.storage'
 import {ethers} from 'ethers'
 import Web3Modal from 'web3modal'
 import MARKET from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
@@ -40,21 +40,27 @@ function Mint() {
         const signer = provider.getSigner()
         const market = new ethers.Contract(nftmarketaddress, MARKET.abi, signer )
         const nft = new ethers.Contract(nftaddress, NFT.abi, signer)
-        const apiKey = process.env.NEXT_PUBLIC_NFTKEY
-        const client = new NFTStorage({ token: apiKey })
+        const apiKey = process.env.NEXT_PUBLIC_WEB3 
+        const client = new Web3Storage({ token: apiKey })
 
-        const metadata = await client.store({
-          name,
-          description,
-          image: new File([img[0]], `${name}.jpg`, { type: 'image/jpg' })
-        })
+        const imgCID = await client.put([new File([new Blob([img[0]])], `${name}`)])
+        const imgLink = `https://${imgCID}.ipfs.dweb.link/${name}`
+        const nftData = new Blob(
+            [JSON.stringify({
+              name,
+              description,
+              imgLink,
+            })], { type:'application/json' }
+        ) 
 
-        let tx = await nft.createToken(metadata.url)
+        const nftCID = await client.put([new File([nftData],'metadata' )])
+
+        let tx = await nft.createToken(`https://${nftCID}.ipfs.dweb.link/metadata`)
         let transaction = await tx.wait()
         const event = transaction.events[0] 
         const tokenId = event.args[2].toNumber()
 
-    tx = await market.mintNFT(nftaddress, tokenId, ethers.utils.parseEther(price), {value: ethers.utils.parseEther('0.025')})
+        tx = await market.mintNFT(nftaddress, tokenId, ethers.utils.parseEther(price), {value: ethers.utils.parseEther('0.025')})
         transaction = await tx.wait()
         router.push('/home')
     }

@@ -10,6 +10,10 @@
         height: calc(100vh - 3rem);
     }
 
+    .xxs {
+        font-size: 8px;
+    }
+
     .move {
         animation: 1s move infinite;
     }

@@ -29,6 +29,7 @@
     "react-identicons": "^1.2.5",
     "react-shimmer-effects": "^1.0.2",
     "tailwind-scrollbar-hide": "^1.1.6",
+    "web3.storage": "^3.5.1",
     "web3modal": "^1.9.4"
   },
   "devDependencies": {
